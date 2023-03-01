@@ -108,7 +108,7 @@ class Monster extends Sprite {
     document.querySelector("#dialogueBox").style.display = "block";
     document.querySelector(
       "#dialogueBox"
-    ).innerHTML = `${this.name} used ${attack.name}`;
+    ).innerHTML = `<p>${this.name} used ${attack.name}<p> <p>Click...<p>`;
 
     let healthBar = "#enemyHealthBar";
     if (this.isEnemy) healthBar = "#playerHealthBar";
