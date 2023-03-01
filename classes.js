@@ -76,6 +76,33 @@ class Sprite {
       if (this.frames.val < this.frames.max - 1) this.frames.val++;
       else this.frames.val = 0;
   }
+}
+
+class Monster extends Sprite {
+  constructor({
+    position,
+    image,
+    frames = { max: 1, hold: 10 },
+    sprites,
+    animate = false,
+    rotation = 0,
+    isEnemy = false,
+    name,
+    attacks,
+  }) {
+    super({
+      position,
+      image,
+      frames,
+      sprites,
+      animate,
+      rotation,
+    });
+    this.health = 100;
+    this.isEnemy = isEnemy;
+    this.name = name;
+    this.attacks = attacks;
+  }
 
   attack({ attack, recipient, renderedSprites }) {
     document.querySelector("#dialogueBox").style.display = "block";
