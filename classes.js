@@ -197,6 +197,14 @@ class Monster extends Sprite {
   }
 
   faint() {
-
+    document.querySelector(
+      "#dialogueBox"
+    ).innerHTML = `<p>${this.name} fainted!<p> <p>Click...<p>`;
+    gsap.to(this.position, {
+      y: this.position.y+20
+    })
+    gsap.to(this, {
+      opacity: 0
+    })
   }
 }
