@@ -354,21 +354,25 @@ const animate = () => {
   }
 };
 
+const renderedSprites = [draggle, emby];
 const animateBattle = () => {
   window.requestAnimationFrame(animateBattle);
   battleBackground.draw();
-  draggle.draw();
-  emby.draw();
+
+  renderedSprites.forEach((sprite) => {
+    sprite.draw();
+  });
 };
 config.onlyBattle ? animateBattle() : animate();
 
 // listens for battle input
 document.querySelectorAll("button").forEach((button) => {
   button.addEventListener("click", (e) => {
-    const selectedAttack = attacks[e.currentTarget.innerHTML]
+    const selectedAttack = attacks[e.currentTarget.innerHTML];
     emby.attack({
       attack: selectedAttack,
       recipient: draggle,
+      renderedSprites
     });
   });
 });
