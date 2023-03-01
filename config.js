@@ -1,8 +1,9 @@
 const config = {
   showBoundaries: 0,
-  onlyBattle: 0,
+  onlyBattle: 1,
 
   game: {
+    musicVolume: 0, //default 0.1
     encounterRatePercentage: 1.5, // default 1.5
     tackleDam: 10, // default 10
     fireBallDam: 25, // default 25
