@@ -361,6 +361,20 @@ const animateBattle = () => {
 };
 config.onlyBattle ? animateBattle() : animate();
 
+// listens for battle input
+document.querySelectorAll("button").forEach((button) => {
+  button.addEventListener("click", () => {
+    emby.attack({
+      attack: {
+        name: "Tackle",
+        damage: 10,
+        type: "Normal",
+      },
+      recipient: draggle,
+    });
+  });
+});
+
 // listens for player movement input
 let lastKey = "";
 window.addEventListener("keydown", (e) => {
