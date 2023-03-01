@@ -53,18 +53,43 @@ collisionsMap.forEach((row, i) => {
 // loads the map
 const mapImage = new Image();
 mapImage.src = "./img/Pellet-Town-Zoom-Help.png";
+// loads the player model
+const playerImage = new Image();
+playerImage.src = "./img/playerDown.png";
 
 // sets a class for images to animate
 class Sprite {
-  constructor({ position, velocity, image }) {
+  constructor({ position, velocity, image, frames = { max: 1 } }) {
     this.position = position;
     this.image = image;
+    this.frames = frames;
   }
 
   draw() {
-    c.drawImage(this.image, this.position.x, this.position.y);
+    c.drawImage(
+      this.image,
+      0,
+      0,
+      this.image.width / this.frames.max,
+      this.image.height,
+      this.position.x,
+      this.position.y,
+      this.image.width / this.frames.max,
+      this.image.height
+    );
   }
 }
+
+const player = new Sprite({
+  position: {
+    x: canvas.width / 2 - 192 / 4 / 2,
+    y: canvas.height / 2 - 68 / 2,
+  },
+  image: playerImage,
+  frames: {
+    max: 4,
+  },
+});
 
 // defines the background image as a sprite
 const background = new Sprite({
@@ -74,10 +99,6 @@ const background = new Sprite({
   },
   image: mapImage,
 });
-
-// loads the player model
-const playerImage = new Image();
-playerImage.src = "./img/playerDown.png";
 
 // tracks whether a key has been pressed
 const keys = {
@@ -95,6 +116,15 @@ const keys = {
   },
 };
 
+const testBoundary = new Boundary({
+  position: {
+    x: 400,
+    y: 400,
+  },
+});
+
+const movables = [background, testBoundary];
+
 // callback function onself that constantly reloads the screen based on player input
 const animate = () => {
   window.requestAnimationFrame(animate);
@@ -102,28 +132,33 @@ const animate = () => {
   background.draw();
 
   // draws each boundary on screen
-  boundaries.forEach((boundary) => {
-    boundary.draw();
-  });
+  //   boundaries.forEach((boundary) => {
+  //     boundary.draw();
+  //   });
 
+  testBoundary.draw();
   // draws player on screen
-  c.drawImage(
-    playerImage,
-    0,
-    0,
-    playerImage.width / 4,
-    playerImage.height,
-    canvas.width / 2 - playerImage.width / 4 / 2,
-    canvas.height / 2 - playerImage.height / 2,
-    playerImage.width / 4,
-    playerImage.height
-  );
+  player.draw();
 
-  // adjusts background position based on movement input
-  if (keys.w.pressed && lastKey === "w") background.position.y += 3;
-  else if (keys.a.pressed && lastKey === "a") background.position.x += 3;
-  else if (keys.s.pressed && lastKey === "s") background.position.y -= 3;
-  else if (keys.d.pressed && lastKey === "d") background.position.x -= 3;
+  //   if (playerImage.)
+
+  // adjusts moveables position based on movement input
+  if (keys.w.pressed && lastKey === "w")
+    movables.forEach((moveable) => {
+      moveable.position.y += 3;
+    });
+  else if (keys.a.pressed && lastKey === "a")
+    movables.forEach((moveable) => {
+      moveable.position.x += 3;
+    });
+  else if (keys.s.pressed && lastKey === "s")
+    movables.forEach((moveable) => {
+      moveable.position.y -= 3;
+    });
+  else if (keys.d.pressed && lastKey === "d")
+    movables.forEach((moveable) => {
+      moveable.position.x -= 3;
+    });
 };
 animate();
 
