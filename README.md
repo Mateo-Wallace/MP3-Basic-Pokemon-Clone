@@ -13,4 +13,4 @@ add attack to monster
 add attack case to class
 
 
-fix fireball, encounter rate, start on overworld
+fix fireball, encounter rate, start on overworld, emby doesnt faint when at 0 till next turn, add chance to hit
