@@ -124,6 +124,7 @@ const draggle = new Sprite({
     hold: 30,
   },
   animate: true,
+  isEnemy: true,
 });
 const emby = new Sprite({
   position: {
