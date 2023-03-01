@@ -29,4 +29,9 @@ const audio = {
     html5: true,
     volume: 0.1,
   }),
+  victory: new Howl({
+    src: config.audio.victory,
+    html5: true,
+    volume: 0.5,
+  }),
 };

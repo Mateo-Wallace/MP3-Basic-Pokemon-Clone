@@ -63,6 +63,7 @@ const initBattle = () => {
               });
 
               battle.initiated = false;
+              audio.map.play();
             },
           });
         });
@@ -98,6 +99,7 @@ const initBattle = () => {
               });
 
               battle.initiated = false;
+              audio.map.play();
             },
           });
         });

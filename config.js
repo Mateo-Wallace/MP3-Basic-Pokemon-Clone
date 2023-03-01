@@ -24,11 +24,12 @@ const config = {
   },
 
   audio: {
-    map: './audio/map.wav',
-    initBattle: './audio/initBattle.wav',
-    battle: './audio/battle.mp3',
-    tackleHit: './audio/tackleHit.wav',
-    initFireball: './audio/initFireball.wav',
-    fireballHit: './audio/fireballHit.wav',
-  }
+    map: "./audio/map.wav",
+    initBattle: "./audio/initBattle.wav",
+    battle: "./audio/battle.mp3",
+    tackleHit: "./audio/tackleHit.wav",
+    initFireball: "./audio/initFireball.wav",
+    fireballHit: "./audio/fireballHit.wav",
+    victory: "./audio/victory.wav",
+  },
 };
