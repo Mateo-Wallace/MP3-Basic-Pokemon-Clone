@@ -34,12 +34,18 @@ collisionsMap.forEach((row, i) => {
 // loads the map image asset
 const mapImage = new Image();
 mapImage.src = config.images.map;
-// loads the player model image asset
-const playerImage = new Image();
-playerImage.src = config.images.playerDown;
 // loads foreground image assets such as buildings and trees
 const foregroundImage = new Image();
 foregroundImage.src = config.images.foregroundObjects;
+// loads the player model image asset
+const playerDownImage = new Image();
+playerDownImage.src = config.images.playerDown;
+const playerUpImage = new Image();
+playerUpImage.src = config.images.playerUp;
+const playerLeftImage = new Image();
+playerLeftImage.src = config.images.playerLeft;
+const playerRightImage = new Image();
+playerRightImage.src = config.images.playerRight;
 
 // defines the player image as a sprite
 const player = new Sprite({
@@ -47,9 +53,15 @@ const player = new Sprite({
     x: canvas.width / 2 - 192 / 4 / 2,
     y: canvas.height / 2 - 68 / 2,
   },
-  image: playerImage,
+  image: playerDownImage,
   frames: {
     max: 4,
+  },
+  sprites: {
+    up: playerUpImage,
+    left: playerLeftImage,
+    right: playerRightImage,
+    down: playerDownImage,
   },
 });
 // defines the background image as a sprite
@@ -113,8 +125,10 @@ const animate = () => {
   foreground.draw();
 
   let moving = true;
+  player.moving = false;
   // adjusts moveables position based on movement input
   if (keys.w.pressed && lastKey === "w") {
+    player.moving = true;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
       if (
@@ -139,6 +153,7 @@ const animate = () => {
         moveable.position.y += 3;
       });
   } else if (keys.a.pressed && lastKey === "a") {
+    player.moving = true;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
       if (
@@ -163,6 +178,7 @@ const animate = () => {
         moveable.position.x += 3;
       });
   } else if (keys.s.pressed && lastKey === "s") {
+    player.moving = true;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
       if (
@@ -187,6 +203,7 @@ const animate = () => {
         moveable.position.y -= 3;
       });
   } else if (keys.d.pressed && lastKey === "d") {
+    player.moving = true;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
       if (
