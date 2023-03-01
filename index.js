@@ -1,16 +1,22 @@
+// gets the html for the screen
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
 // determines size for game window
 canvas.width = 1024;
 canvas.height = 576;
-c.fillStyle = "white";
-c.fillRect(0, 0, canvas.width, canvas.height);
+
+// sets position for collisions that block player
+const collisionsMap = [];
+for (let i = 0; i < collisions.length; i += 70) {
+  collisionsMap.push(collisions.slice(i, 70 + i));
+}
 
 // loads the map
 const mapImage = new Image();
 mapImage.src = "./img/Pellet-Town-Zoom-Help.png";
 
+// sets a class for images to animate
 class Sprite {
   constructor({ position, velocity, image }) {
     this.position = position;
@@ -22,6 +28,7 @@ class Sprite {
   }
 }
 
+// defines the background image as a sprite
 const background = new Sprite({
   position: {
     x: -735,
@@ -34,6 +41,7 @@ const background = new Sprite({
 const playerImage = new Image();
 playerImage.src = "./img/playerDown.png";
 
+// tracks whether a key has been pressed
 const keys = {
   w: {
     pressed: false,
@@ -49,6 +57,7 @@ const keys = {
   },
 };
 
+// callback function onself that constantly reloads the screen based on player input
 const animate = () => {
   window.requestAnimationFrame(animate);
   // draws map on screen
@@ -66,6 +75,7 @@ const animate = () => {
     playerImage.height
   );
 
+  // adjusts background position based on movement input
   if (keys.w.pressed && lastKey === "w") background.position.y += 3;
   else if (keys.a.pressed && lastKey === "a") background.position.x += 3;
   else if (keys.s.pressed && lastKey === "s") background.position.y -= 3;
@@ -73,8 +83,8 @@ const animate = () => {
 };
 animate();
 
-let lastKey = "";
 // listens for player movement input
+let lastKey = "";
 window.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "w":
