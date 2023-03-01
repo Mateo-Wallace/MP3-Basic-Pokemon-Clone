@@ -21,8 +21,10 @@ emby.attacks.forEach((attack) => {
   document.querySelector("#attacksBox").append(button);
 });
 
+let battleAnimationId;
+
 const animateBattle = () => {
-  window.requestAnimationFrame(animateBattle);
+  battleAnimationId = window.requestAnimationFrame(animateBattle);
   battleBackground.draw();
 
   renderedSprites.forEach((sprite) => {
@@ -48,8 +50,21 @@ document.querySelectorAll("button").forEach((button) => {
       queue.push(() => {
         draggle.faint();
       });
+      queue.push(() => {
+        // fade to black
+        gsap.to("#overlappingDiv", {
+          opacity: 1,
+          onComplete: () => {
+            cancelAnimationFrame(battleAnimationId);
+            animate();
+            document.querySelector("#userInterface").style.display = "none";
 
-      return
+            gsap.to("#overlappingDiv", {
+              opacity: 0,
+            });
+          },
+        });
+      });
     }
 
     // enemy attacks
@@ -62,6 +77,12 @@ document.querySelectorAll("button").forEach((button) => {
         renderedSprites,
       });
     });
+
+    if (emby.health <= 0) {
+      queue.push(() => {
+        emby.faint();
+      });
+    }
   });
 
   button.addEventListener("mouseenter", (e) => {
