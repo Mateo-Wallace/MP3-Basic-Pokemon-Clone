@@ -177,6 +177,9 @@ const animate = () => {
         console.log("activate battle");
         // deactivate current animation loop
         window.cancelAnimationFrame(animationId);
+        audio.map.stop()
+        audio.initBattle.play()
+        audio.battle.play()
         battle.initiated = true;
         // makes screen flash before battle
         gsap.to("#overlappingDiv", {
@@ -347,5 +350,13 @@ window.addEventListener("keyup", (e) => {
     case "d":
       keys.d.pressed = false;
       break;
+  }
+});
+
+let clicked = false;
+window.addEventListener("click", () => {
+  if (!clicked) {
+    audio.map.play();
+    clicked = true;
   }
 });
