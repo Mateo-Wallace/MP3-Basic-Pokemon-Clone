@@ -128,6 +128,10 @@ const rectangularCollision = ({ rectangle1, rectangle2 }) => {
   );
 };
 
+const battle = {
+  initiated: false,
+};
+
 // callback function onself that constantly reloads the screen based on player input
 const animate = () => {
   window.requestAnimationFrame(animate);
@@ -146,6 +150,11 @@ const animate = () => {
   player.draw();
   foreground.draw();
 
+  let moving = true;
+  player.moving = false;
+
+  if (battle.initiated) return;
+  // activate a battle
   if (keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed) {
     for (let i = 0; i < battleZones.length; i++) {
       const battleZone = battleZones[i];
@@ -168,14 +177,30 @@ const animate = () => {
         overlappingArea > (player.width * player.height) / 2 &&
         Math.random() < config.game.encounterRatePercentage / 100
       ) {
-        console.log("battle zone collision");
+        console.log("activate battle");
+        battle.initiated = true;
+        // makes screen flash before battle
+        gsap.to("#overlappingDiv", {
+          opacity: 1,
+          repeat: 3,
+          yoyo: true,
+          duration: 0.4,
+          onComplete() {
+            gsap.to("#overlappingDiv", {
+              opacity: 1,
+              duration: 0.4,
+            });
+
+            // activate new animation loop
+
+            // deactivate current animation loop
+          },
+        });
         break;
       }
     }
   }
 
-  let moving = true;
-  player.moving = false;
   // adjusts moveables position based on movement input
   if (keys.w.pressed && lastKey === "w") {
     player.moving = true;
