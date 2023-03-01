@@ -12,6 +12,44 @@ for (let i = 0; i < collisions.length; i += 70) {
   collisionsMap.push(collisions.slice(i, 70 + i));
 }
 
+// defines what a boundary is
+class Boundary {
+  static width = 48;
+  static height = 48;
+  constructor({ position }) {
+    this.position = position;
+    this.width = 48;
+    this.height = 48;
+  }
+
+  draw() {
+    c.fillStyle = "red";
+    c.fillRect(this.position.x, this.position.y, this.width, this.height);
+  }
+}
+
+// array to hold every row of boundaries
+const boundaries = [];
+const offset = {
+  x: -735,
+  y: -650,
+};
+
+// pushes each row of boundaries into an array with defined positioning
+collisionsMap.forEach((row, i) => {
+  row.forEach((symbol, j) => {
+    if (symbol === 1025)
+      boundaries.push(
+        new Boundary({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y,
+          },
+        })
+      );
+  });
+});
+
 // loads the map
 const mapImage = new Image();
 mapImage.src = "./img/Pellet-Town-Zoom-Help.png";
@@ -31,8 +69,8 @@ class Sprite {
 // defines the background image as a sprite
 const background = new Sprite({
   position: {
-    x: -735,
-    y: -610,
+    x: offset.x,
+    y: offset.y,
   },
   image: mapImage,
 });
@@ -62,6 +100,12 @@ const animate = () => {
   window.requestAnimationFrame(animate);
   // draws map on screen
   background.draw();
+
+  // draws each boundary on screen
+  boundaries.forEach((boundary) => {
+    boundary.draw();
+  });
+
   // draws player on screen
   c.drawImage(
     playerImage,
