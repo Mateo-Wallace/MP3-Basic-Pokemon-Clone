@@ -206,7 +206,7 @@ const animate = () => {
   }
 
   // adjusts moveables position based on movement input
-  if (keys.w.pressed && lastKey === "w") {
+  if (keys.w.pressed) {
     player.animate = true;
     player.image = player.sprites.up;
     for (let i = 0; i < boundaries.length; i++) {
@@ -232,7 +232,8 @@ const animate = () => {
       movables.forEach((moveable) => {
         moveable.position.y += 3;
       });
-  } else if (keys.a.pressed && lastKey === "a") {
+  }
+  if (keys.a.pressed) {
     player.animate = true;
     player.image = player.sprites.left;
     for (let i = 0; i < boundaries.length; i++) {
@@ -258,7 +259,8 @@ const animate = () => {
       movables.forEach((moveable) => {
         moveable.position.x += 3;
       });
-  } else if (keys.s.pressed && lastKey === "s") {
+  }
+  if (keys.s.pressed) {
     player.animate = true;
     player.image = player.sprites.down;
     for (let i = 0; i < boundaries.length; i++) {
@@ -284,7 +286,8 @@ const animate = () => {
       movables.forEach((moveable) => {
         moveable.position.y -= 3;
       });
-  } else if (keys.d.pressed && lastKey === "d") {
+  }
+  if (keys.d.pressed) {
     player.animate = true;
     player.image = player.sprites.right;
     for (let i = 0; i < boundaries.length; i++) {
@@ -314,24 +317,19 @@ const animate = () => {
 };
 
 // listens for player movement input
-let lastKey = "";
 window.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "w":
       keys.w.pressed = true;
-      lastKey = "w";
       break;
     case "a":
       keys.a.pressed = true;
-      lastKey = "a";
       break;
     case "s":
       keys.s.pressed = true;
-      lastKey = "s";
       break;
     case "d":
       keys.d.pressed = true;
-      lastKey = "d";
       break;
   }
 });
