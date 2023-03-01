@@ -42,12 +42,12 @@ document.querySelectorAll("button").forEach((button) => {
       recipient: draggle,
       renderedSprites,
     });
+
+    const randomAttack =
+      draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)];
     queue.push(() => {
       draggle.attack({
-        attack:
-          Object.values(attacks)[
-            Math.floor(Math.random() * Object.values(attacks).length)
-          ],
+        attack: randomAttack,
         recipient: emby,
         renderedSprites,
       });
