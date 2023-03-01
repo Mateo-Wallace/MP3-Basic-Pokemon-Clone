@@ -165,7 +165,8 @@ const animate = () => {
           rectangle1: player,
           rectangle2: battleZone,
         }) &&
-        overlappingArea > (player.width * player.height) / 2
+        overlappingArea > (player.width * player.height) / 2 &&
+        Math.random() < config.game.encounterRatePercentage / 100
       ) {
         console.log("battle zone collision");
         break;

@@ -10,4 +10,8 @@ const config = {
     playerRight: "./img/playerRight.png",
     playerLeft: "./img/playerLeft.png",
   },
+
+  game: {
+    encounterRatePercentage: 1.5, // 0 to 100
+  }
 };
