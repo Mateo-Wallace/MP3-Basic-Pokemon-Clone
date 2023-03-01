@@ -17,6 +17,12 @@ let battleAnimationId;
 let queue;
 
 const initBattle = () => {
+  document.querySelector("#userInterface").style.display = "block";
+  document.querySelector("#dialogueBox").style.display = "none";
+  document.querySelector("#enemyHealthBar").style.width = "100%";
+  document.querySelector("#playerHealthBar").style.width = "100%";
+  document.querySelector("#attacksBox").replaceChildren();
+
   draggle = new Monster(monsters.Draggle);
   emby = new Monster(monsters.Emby);
   renderedSprites = [draggle, emby];

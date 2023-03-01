@@ -1,29 +1,28 @@
-const embyImage = new Image();
-embyImage.src = config.images.emby;
-const draggleImage = new Image();
-draggleImage.src = config.images.draggle;
-
 const monsters = {
   Emby: {
     position: {
       x: 280,
       y: 325,
     },
-    image: embyImage,
+    image: {
+      src: config.images.emby,
+    },
     frames: {
       max: 4,
       hold: 30,
     },
     animate: true,
     name: "Emby",
-    attacks: [attacks.Tackle, attacks.Fireball]
+    attacks: [attacks.Tackle, attacks.Fireball],
   },
   Draggle: {
     position: {
       x: 800,
       y: 100,
     },
-    image: draggleImage,
+    image: {
+      src: config.images.draggle,
+    },
     frames: {
       max: 4,
       hold: 30,
@@ -31,6 +30,6 @@ const monsters = {
     animate: true,
     isEnemy: true,
     name: "Draggle",
-    attacks: [attacks.Tackle, attacks.Fireball]
+    attacks: [attacks.Tackle, attacks.Fireball],
   },
 };
