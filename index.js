@@ -125,6 +125,7 @@ const draggle = new Sprite({
   },
   animate: true,
   isEnemy: true,
+  name: "Draggle",
 });
 const emby = new Sprite({
   position: {
@@ -137,6 +138,7 @@ const emby = new Sprite({
     hold: 30,
   },
   animate: true,
+  name: "Emby",
 });
 
 // tracks whether a key has been pressed
@@ -372,7 +374,7 @@ document.querySelectorAll("button").forEach((button) => {
     emby.attack({
       attack: selectedAttack,
       recipient: draggle,
-      renderedSprites
+      renderedSprites,
     });
   });
 });
