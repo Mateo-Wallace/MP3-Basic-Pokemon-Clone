@@ -36,6 +36,7 @@ const queue = [];
 // listens for battle input
 document.querySelectorAll("button").forEach((button) => {
   button.addEventListener("click", (e) => {
+    // player attacks
     const selectedAttack = attacks[e.currentTarget.innerHTML];
     emby.attack({
       attack: selectedAttack,
@@ -43,6 +44,15 @@ document.querySelectorAll("button").forEach((button) => {
       renderedSprites,
     });
 
+    if (draggle.health <= 0) {
+      queue.push(() => {
+        draggle.faint();
+      });
+
+      return
+    }
+
+    // enemy attacks
     const randomAttack =
       draggle.attacks[Math.floor(Math.random() * draggle.attacks.length)];
     queue.push(() => {

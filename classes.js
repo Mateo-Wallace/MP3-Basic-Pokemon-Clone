@@ -22,9 +22,7 @@ class Sprite {
     frames = { max: 1, hold: 10 },
     sprites,
     animate = false,
-    isEnemy = false,
     rotation = 0,
-    name,
   }) {
     this.position = position;
     this.image = image;
@@ -36,10 +34,7 @@ class Sprite {
     this.animate = animate;
     this.sprites = sprites;
     this.opacity = 1;
-    this.health = 100;
-    this.isEnemy = isEnemy;
     this.rotation = rotation;
-    this.name = name;
   }
 
   draw() {
@@ -115,7 +110,7 @@ class Monster extends Sprite {
 
     let rotation = 1;
     if (this.isEnemy) rotation = -2.2;
-    this.health -= attack.damage;
+    recipient.health -= attack.damage;
 
     switch (attack.name) {
       case "Fireball":
@@ -140,7 +135,7 @@ class Monster extends Sprite {
           onComplete: () => {
             // enemy gets hit
             gsap.to(healthBar, {
-              width: this.health + "%",
+              width: recipient.health + "%",
             });
 
             gsap.to(recipient.position, {
@@ -176,7 +171,7 @@ class Monster extends Sprite {
             onComplete: () => {
               // enemy gets hit
               gsap.to(healthBar, {
-                width: this.health + "%",
+                width: recipient.health + "%",
               });
 
               gsap.to(recipient.position, {
@@ -199,5 +194,9 @@ class Monster extends Sprite {
           });
         break;
     }
+  }
+
+  faint() {
+
   }
 }
