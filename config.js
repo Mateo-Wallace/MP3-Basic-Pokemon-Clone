@@ -1,6 +1,12 @@
 const config = {
   showBoundaries: 1,
-  onlyBattle: 1,
+  onlyBattle: 0,
+
+  game: {
+    encounterRatePercentage: 50, // default 1.5
+    tackleDam: 10, // default 10
+    fireBallDam: 100, // default 25
+  },
 
   images: {
     map: "./img/Pellet-Town-Zoom-Help.png",
@@ -17,7 +23,7 @@ const config = {
     fireball: "./img/fireball.png",
   },
 
-  game: {
-    encounterRatePercentage: 50, // 0 to 100. preferred is 1.5
-  },
+  audio: {
+    map: './audio/map.wav'
+  }
 };
