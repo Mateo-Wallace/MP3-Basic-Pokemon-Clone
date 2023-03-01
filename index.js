@@ -134,7 +134,7 @@ const battle = {
 
 // callback function onself that constantly reloads the screen based on player input
 const animate = () => {
-  window.requestAnimationFrame(animate);
+  const animationId = window.requestAnimationFrame(animate);
   // draws map on screen
   background.draw();
 
@@ -178,6 +178,8 @@ const animate = () => {
         Math.random() < config.game.encounterRatePercentage / 100
       ) {
         console.log("activate battle");
+        // deactivate current animation loop
+        window.cancelAnimationFrame(animationId);
         battle.initiated = true;
         // makes screen flash before battle
         gsap.to("#overlappingDiv", {
@@ -189,11 +191,15 @@ const animate = () => {
             gsap.to("#overlappingDiv", {
               opacity: 1,
               duration: 0.4,
+              onComplete() {
+                // activate new animation loop
+                animateBattle();
+                gsap.to("#overlappingDiv", {
+                  opacity: 0,
+                  duration: 0.4,
+                });
+              },
             });
-
-            // activate new animation loop
-
-            // deactivate current animation loop
           },
         });
         break;
@@ -309,6 +315,20 @@ const animate = () => {
   }
 };
 animate();
+
+const battleBackgroundImage = new Image();
+battleBackgroundImage.src = config.images.battleBackground;
+const battleBackground = new Sprite({
+  position: {
+    x: 0,
+    y: 0,
+  },
+  image: battleBackgroundImage,
+});
+const animateBattle = () => {
+  window.requestAnimationFrame(animateBattle);
+  battleBackground.draw();
+};
 
 // listens for player movement input
 let lastKey = "";
