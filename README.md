@@ -6,3 +6,8 @@ Video: 5:56:51
 https://www.youtube.com/watch?v=yP5DKzriqXA
 
 https://github.com/chriscourses/pokemon-style-game
+
+Make new attack:
+make new attack object
+add attack to monster
+add attack case to class
