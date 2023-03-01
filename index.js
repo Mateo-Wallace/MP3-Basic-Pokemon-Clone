@@ -364,13 +364,10 @@ config.onlyBattle ? animateBattle() : animate();
 
 // listens for battle input
 document.querySelectorAll("button").forEach((button) => {
-  button.addEventListener("click", () => {
+  button.addEventListener("click", (e) => {
+    const selectedAttack = attacks[e.currentTarget.innerHTML]
     emby.attack({
-      attack: {
-        name: "Tackle",
-        damage: 10,
-        type: "Normal",
-      },
+      attack: selectedAttack,
       recipient: draggle,
     });
   });
