@@ -13,6 +13,7 @@ const config = {
 
     battleBackground: "./img/battleBackground.png",
     draggle: "./img/draggleSprite.png",
+    emby: "./img/embySprite.png"
   },
 
   game: {

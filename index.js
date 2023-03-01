@@ -102,6 +102,8 @@ const battleBackgroundImage = new Image();
 battleBackgroundImage.src = config.images.battleBackground;
 const draggleImage = new Image();
 draggleImage.src = config.images.draggle;
+const embyImage = new Image();
+embyImage.src = config.images.emby;
 
 // loads all battle sprites
 const battleBackground = new Sprite({
@@ -117,6 +119,18 @@ const draggle = new Sprite({
     y: 100,
   },
   image: draggleImage,
+  frames: {
+    max: 4,
+    hold: 30,
+  },
+  animate: true,
+});
+const emby = new Sprite({
+  position: {
+    x: 280,
+    y: 325,
+  },
+  image: embyImage,
   frames: {
     max: 4,
     hold: 30,
@@ -343,6 +357,7 @@ const animateBattle = () => {
   window.requestAnimationFrame(animateBattle);
   battleBackground.draw();
   draggle.draw();
+  emby.draw();
 };
 config.onlyBattle ? animateBattle() : animate();
 
