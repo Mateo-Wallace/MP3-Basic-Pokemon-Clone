@@ -31,6 +31,25 @@ collisionsMap.forEach((row, i) => {
   });
 });
 
+const battleZonesMap = [];
+for (let i = 0; i < battleZonesData.length; i += 70) {
+  battleZonesMap.push(battleZonesData.slice(i, 70 + i));
+}
+const battleZones = [];
+battleZonesMap.forEach((row, i) => {
+  row.forEach((symbol, j) => {
+    if (symbol === 1025)
+      battleZones.push(
+        new Boundary({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y,
+          },
+        })
+      );
+  });
+});
+
 // loads the map image asset
 const mapImage = new Image();
 mapImage.src = config.images.map;
@@ -98,7 +117,7 @@ const keys = {
 };
 
 // determines what objects move on player key press
-const movables = [background, ...boundaries, foreground];
+const movables = [background, ...boundaries, foreground, ...battleZones];
 // determines if player and boundaries are overlapping
 const rectangularCollision = ({ rectangle1, rectangle2 }) => {
   return (
@@ -118,6 +137,9 @@ const animate = () => {
   //   draws each boundary on screen
   boundaries.forEach((boundary) => {
     boundary.draw();
+  });
+  battleZones.forEach((battleZone) => {
+    battleZone.draw();
   });
 
   // draws player on screen

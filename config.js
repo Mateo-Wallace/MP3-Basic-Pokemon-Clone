@@ -1,5 +1,5 @@
 const config = {
-  showBoundaries: 0,
+  showBoundaries: 1,
 
   images: {
     map: "./img/Pellet-Town-Zoom-Help.png",
