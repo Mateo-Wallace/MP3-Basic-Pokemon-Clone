@@ -50,13 +50,11 @@ battleZonesMap.forEach((row, i) => {
   });
 });
 
-// loads the map image asset
+// loads all overworld images
 const mapImage = new Image();
 mapImage.src = config.images.map;
-// loads foreground image assets such as buildings and trees
 const foregroundImage = new Image();
 foregroundImage.src = config.images.foregroundObjects;
-// loads the player model image asset
 const playerDownImage = new Image();
 playerDownImage.src = config.images.playerDown;
 const playerUpImage = new Image();
@@ -66,7 +64,7 @@ playerLeftImage.src = config.images.playerLeft;
 const playerRightImage = new Image();
 playerRightImage.src = config.images.playerRight;
 
-// defines the player image as a sprite
+// loads all overworld sprites
 const player = new Sprite({
   position: {
     x: canvas.width / 2 - 192 / 4 / 2,
@@ -75,6 +73,7 @@ const player = new Sprite({
   image: playerDownImage,
   frames: {
     max: 4,
+    hold: 10,
   },
   sprites: {
     up: playerUpImage,
@@ -83,7 +82,6 @@ const player = new Sprite({
     down: playerDownImage,
   },
 });
-// defines the background image as a sprite
 const background = new Sprite({
   position: {
     x: offset.x,
@@ -91,13 +89,39 @@ const background = new Sprite({
   },
   image: mapImage,
 });
-// defines foreground image as a sprite
 const foreground = new Sprite({
   position: {
     x: offset.x,
     y: offset.y,
   },
   image: foregroundImage,
+});
+
+// loads all battle images
+const battleBackgroundImage = new Image();
+battleBackgroundImage.src = config.images.battleBackground;
+const draggleImage = new Image();
+draggleImage.src = config.images.draggle;
+
+// loads all battle sprites
+const battleBackground = new Sprite({
+  position: {
+    x: 0,
+    y: 0,
+  },
+  image: battleBackgroundImage,
+});
+const draggle = new Sprite({
+  position: {
+    x: 800,
+    y: 100,
+  },
+  image: draggleImage,
+  frames: {
+    max: 4,
+    hold: 30,
+  },
+  animate: true,
 });
 
 // tracks whether a key has been pressed
@@ -151,7 +175,7 @@ const animate = () => {
   foreground.draw();
 
   let moving = true;
-  player.moving = false;
+  player.animate = false;
 
   if (battle.initiated) return;
   // activate a battle
@@ -209,7 +233,7 @@ const animate = () => {
 
   // adjusts moveables position based on movement input
   if (keys.w.pressed && lastKey === "w") {
-    player.moving = true;
+    player.animate = true;
     player.image = player.sprites.up;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
@@ -235,7 +259,7 @@ const animate = () => {
         moveable.position.y += 3;
       });
   } else if (keys.a.pressed && lastKey === "a") {
-    player.moving = true;
+    player.animate = true;
     player.image = player.sprites.left;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
@@ -261,7 +285,7 @@ const animate = () => {
         moveable.position.x += 3;
       });
   } else if (keys.s.pressed && lastKey === "s") {
-    player.moving = true;
+    player.animate = true;
     player.image = player.sprites.down;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
@@ -287,7 +311,7 @@ const animate = () => {
         moveable.position.y -= 3;
       });
   } else if (keys.d.pressed && lastKey === "d") {
-    player.moving = true;
+    player.animate = true;
     player.image = player.sprites.right;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
@@ -314,21 +338,13 @@ const animate = () => {
       });
   }
 };
-animate();
 
-const battleBackgroundImage = new Image();
-battleBackgroundImage.src = config.images.battleBackground;
-const battleBackground = new Sprite({
-  position: {
-    x: 0,
-    y: 0,
-  },
-  image: battleBackgroundImage,
-});
 const animateBattle = () => {
   window.requestAnimationFrame(animateBattle);
   battleBackground.draw();
+  draggle.draw();
 };
+config.onlyBattle ? animateBattle() : animate();
 
 // listens for player movement input
 let lastKey = "";
