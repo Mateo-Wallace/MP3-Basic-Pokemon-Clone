@@ -11,3 +11,6 @@ Make new attack:
 make new attack object
 add attack to monster
 add attack case to class
+
+
+fix fireball, encounter rate, start on overworld
