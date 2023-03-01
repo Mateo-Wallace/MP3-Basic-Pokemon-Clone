@@ -1,2 +1,8 @@
 # MP3-Basic-Video-Game
 Basic game where character can move around a map and fight
+
+Video: 5:56:51
+
+https://www.youtube.com/watch?v=yP5DKzriqXA
+
+https://github.com/chriscourses/pokemon-style-game
