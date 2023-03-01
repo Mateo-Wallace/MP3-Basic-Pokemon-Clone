@@ -53,6 +53,8 @@ const animateBattle = () => {
 };
 config.onlyBattle ? animateBattle() : animate();
 
+const queue = [];
+
 // listens for battle input
 document.querySelectorAll("button").forEach((button) => {
   button.addEventListener("click", (e) => {
@@ -62,5 +64,22 @@ document.querySelectorAll("button").forEach((button) => {
       recipient: draggle,
       renderedSprites,
     });
+    queue.push(() => {
+      draggle.attack({
+        attack:
+          Object.values(attacks)[
+            Math.floor(Math.random() * Object.values(attacks).length)
+          ],
+        recipient: emby,
+        renderedSprites,
+      });
+    });
   });
+});
+
+document.querySelector("#dialogueBox").addEventListener("click", (e) => {
+  if (queue.length > 0) {
+    queue[0]();
+    queue.shift();
+  } else e.currentTarget.style.display = "none";
 });
