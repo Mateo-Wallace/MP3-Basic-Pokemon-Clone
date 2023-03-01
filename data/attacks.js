@@ -11,4 +11,16 @@ const attacks = {
     type: "Fire",
     color: "red",
   },
+  Disintegrate: {
+    name: "Disintegrate",
+    damage: config.game.disintegrateDam,
+    type: "Dark",
+    color: "purple"
+  },
+  Heal: {
+    name: "Heal",
+    damage: config.game.heal,
+    type: "Light",
+    color: "yellow"
+  }
 };

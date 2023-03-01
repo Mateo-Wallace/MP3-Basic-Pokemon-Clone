@@ -1,11 +1,13 @@
 const config = {
-  showBoundaries: 1,
+  showBoundaries: 0,
   onlyBattle: 0,
 
   game: {
-    encounterRatePercentage: 50, // default 1.5
+    encounterRatePercentage: 1.5, // default 1.5
     tackleDam: 10, // default 10
-    fireBallDam: 100, // default 25
+    fireBallDam: 25, // default 25
+    disintegrateDam: 100, // default 100. instakill
+    healDam: -10, //default -10
   },
 
   images: {
