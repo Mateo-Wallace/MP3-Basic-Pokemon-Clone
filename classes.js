@@ -197,6 +197,10 @@ class Monster extends Sprite {
             x: this.position.x,
           });
         break;
+      case "Heal":
+        break;
+      case "Disintegrate":
+        break;
     }
   }
 
