@@ -80,7 +80,15 @@ for (let i = 0; i < charactersMapData.length; i += 70) {
 const characters = [];
 charactersMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
-    if (symbol === 1026)
+    if (symbol === 1026) {
+      boundaries.push(
+        new Boundary({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y,
+          },
+        })
+      );
       characters.push(
         new Sprite({
           position: {
@@ -92,10 +100,13 @@ charactersMap.forEach((row, i) => {
           },
           frames: {
             max: 4,
-            hold: 10,
+            hold: 60,
           },
+          scale: 3,
+          animate: true,
         })
       );
+    }
   });
 });
 
@@ -162,8 +173,21 @@ const keys = {
 };
 
 // determines what objects move on player key press
-const movables = [background, ...boundaries, foreground, ...battleZones, ...characters];
-const renderables = [background, ...boundaries, ...battleZones, ...characters, player, foreground]
+const movables = [
+  background,
+  ...boundaries,
+  foreground,
+  ...battleZones,
+  ...characters,
+];
+const renderables = [
+  background,
+  ...boundaries,
+  ...battleZones,
+  ...characters,
+  player,
+  foreground,
+];
 // determines if player and boundaries are overlapping
 const rectangularCollision = ({ rectangle1, rectangle2 }) => {
   return (
