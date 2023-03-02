@@ -403,8 +403,15 @@ const animate = () => {
   }
 };
 
+let clicked = false;
+
 // listens for player movement input
 window.addEventListener("keydown", (e) => {
+  if (!clicked) {
+    audio.map.play();
+    clicked = true;
+  }
+
   switch (e.key) {
     case "w":
       keys.w.pressed = true;
@@ -475,7 +482,6 @@ document.querySelectorAll(".controller").forEach((button) => {
   });
 });
 
-let clicked = false;
 window.addEventListener("click", () => {
   if (!clicked) {
     audio.map.play();

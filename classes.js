@@ -134,7 +134,8 @@ class Monster extends Sprite {
     if (attack.name != "Heal") {
       healthBar = "#enemyHealthBar";
       if (this.isEnemy) healthBar = "#playerHealthBar";
-      recipient.health -= attack.damage;
+      let hp = Math.max(0, recipient.health - attack.damage)
+      recipient.health = hp;
     } else {
       healthBar = "#playerHealthBar";
       if (this.isEnemy) healthBar = "#enemyHealthBar";
