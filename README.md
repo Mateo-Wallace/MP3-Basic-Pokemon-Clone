@@ -33,30 +33,30 @@ While building this project I learned to:
 
 ## Usage
 
-Navigate to [TBD](https://mateo-wallace.github.io/MP3-Basic-Video-Game/) in order to see the site. You will be presented with the your player standing outside of their house. It will look something like this:
+Navigate to [mateo-wallace.github.io/MP3-Basic-Pokemon-Clone/](https://mateo-wallace.github.io/MP3-Basic-Pokemon-Clone/) in order to see the site. You will be presented with the your player standing outside of their house. It will look something like this:
 
 ![example of deployed site](./assets/img/deployed.png)
 
-- To **move** either type `w, a, s, d` or click on the ones on screen. The on screen version was added to allow for mobile functionality. 
+- To **move** either type `w, a, s, d` or click on the ones on screen. The on screen version was added to allow for mobile functionality.
 
 - To **interact with in an npc** walk up to them until you can no longer move then use `space`. This will initiate their dialogue. Your movement will be haulted while dialogue in initiated. In order to continue through npc dialogue simply continue to use `space` until they stop talking.
 
 - To **enter combat** enter a dark green patch of grass, like this one:
 
-    ![dark green patch of grass](./assets/img/grass-example-crop.png)
+  ![dark green patch of grass](./assets/img/grass-example-crop.png)
 
-    You will have a 1.5% chance of entering combat while walking on these tiles. Once you have entered combat your screen will shift to a battle scene like this one:
+  You will have a 1.5% chance of entering combat while walking on these tiles. Once you have entered combat your screen will shift to a battle scene like this one:
 
-    ![battle scene example](./assets/img/battle-scene-example.png)
+  ![battle scene example](./assets/img/battle-scene-example.png)
 
-    From within the battle scene simply select the type of attack you would like to use.
+  From within the battle scene simply select the type of attack you would like to use.
 
-    - Tackle does 10% damage
-    - Fireball does 25% damage
-    - Heal recovers the players health by 10%
-    - Disintegrate does 100% damage, basically an instakill
+  - Tackle does 10% damage
+  - Fireball does 25% damage
+  - Heal recovers the players health by 10%
+  - Disintegrate does 100% damage, basically an instakill
 
-    After every action text will appear on screen describing what happened. Click on the text box in order to cycle through the text. Once combat is completed you will be brought back to the overworld.
+  After every action text will appear on screen describing what happened. Click on the text box in order to cycle through the text. Once combat is completed you will be brought back to the overworld.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -94,7 +94,7 @@ Distributed under the MIT License. See [LICENSE](./LICENSE) for more information
 
 Mateo Wallace - [GitHub](https://github.com/Mateo-Wallace) - [Email](mailto:mateo.t.wallace@gmail.com) - [LinkedIn](https://www.linkedin.com/in/mateo-wallace/)
 
-Project Link: [TBD](https://github.com/Mateo-Wallace/MP2-Discord-DumBot-V2)
+Project Link: [MP3-Basic-Pokemon-Clone](https://github.com/Mateo-Wallace/MP3-Basic-Pokemon-Clone)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -106,4 +106,3 @@ I am appreciative for the source code, ideas, and inspiration that all of these 
 - [chriscourses - pokemon-style-game](https://github.com/chriscourses/pokemon-style-game)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
