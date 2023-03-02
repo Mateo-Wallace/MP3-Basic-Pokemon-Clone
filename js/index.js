@@ -30,4 +30,3 @@ else if (
   window.innerWidth < canvas.width * (window.innerHeight / canvas.height)
 )
   body.style.zoom = `${(window.innerWidth / canvas.width) * 100 - 5}%`;
-
