@@ -33,15 +33,30 @@ While building this project I learned to:
 
 ## Usage
 
-Navigate to [TBD](https://mateo-wallace.github.io/MP3-Basic-Video-Game/) in order to see the site. You will be presented with the homepage that displays all users posts, it should look something like this:
+Navigate to [TBD](https://mateo-wallace.github.io/MP3-Basic-Video-Game/) in order to see the site. You will be presented with the your player standing outside of their house. It will look something like this:
 
-![example of deployed site](./app/utils/assets/deployed.png)
+![example of deployed site](./assets/img/deployed.png)
 
-The site will display the title, creator, points, and amount of comments a post has. By clicking on the title of the post you will be directed to the news article. By clicking on the comments you will be directed to the singular post and all of its comments.
+- To **move** either type `w, a, s, d` or click on the ones on screen. The on screen version was added to allow for mobile functionality. 
 
-In order to make a post you must either signup or login, you can do this by clicking the login button on the top right.
+- To **interact with in an npc** walk up to them until you can no longer move then use `space`. This will initiate their dialogue. Your movement will be haulted while dialogue in initiated. In order to continue through npc dialogue simply continue to use `space` until they stop talking.
 
-Once you are logged in if you select your dashboard in the top right that is where you will be able to make a post. Also while logged in you can view other peoples posts and comment or upvote on them.
+- To **enter combat** enter a dark green patch of grass, like this one:
+
+    ![dark green patch of grass](./assets/img/grass-example-crop.png)
+
+    You will have a 1.5% chance of entering combat while walking on these tiles. Once you have entered combat your screen will shift to a battle scene like this one:
+
+    ![battle scene example](./assets/img/battle-scene-example.png)
+
+    From within the battle scene simply select the type of attack you would like to use.
+
+    - Tackle does 10% damage
+    - Fireball does 25% damage
+    - Heal recovers the players health by 10%
+    - Disintegrate does 100% damage, basically an instakill
+
+    After every action text will appear on screen describing what happened. Click on the text box in order to cycle through the text. Once combat is completed you will be brought back to the overworld.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
