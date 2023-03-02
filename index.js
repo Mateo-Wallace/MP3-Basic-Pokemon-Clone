@@ -446,13 +446,14 @@ window.addEventListener("keydown", (e) => {
 
         const { dialogueIndex, dialogue } = player.interactionAsset;
         if (dialogueIndex <= dialogue.length - 1) {
-          console.log(player.interactionAsset.dialogue[dialogueIndex]);
+          document.querySelector('#characterDialogueBox').innerHTML = player.interactionAsset.dialogue[dialogueIndex];
           return;
         }
 
         // finish conversation
         player.isInteracting = false;
         player.interactionAsset.dialogueIndex = 0
+        document.querySelector('#characterDialogueBox').style.display = 'none'
         break;
     }
     return;
@@ -476,7 +477,8 @@ window.addEventListener("keydown", (e) => {
 
       // beggining the conversation
       const firstMessage = player.interactionAsset.dialogue[0];
-      console.log(firstMessage);
+      document.querySelector('#characterDialogueBox').innerHTML = firstMessage;
+      document.querySelector('#characterDialogueBox').style.display = 'flex'
       player.isInteracting = true;
       break;
   }

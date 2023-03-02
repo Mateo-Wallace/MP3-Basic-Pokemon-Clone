@@ -118,7 +118,7 @@ class Monster extends Sprite {
     document.querySelector("#dialogueBox").style.display = "block";
     document.querySelector(
       "#dialogueBox"
-    ).innerHTML = `<p>${this.name} used ${attack.name}<p> <p>Click...<p>`;
+    ).innerHTML = `<p>${this.name} used ${attack.name}</p> <p>Click...</p>`;
 
     let rotation = 1;
     if (this.isEnemy) rotation = -2.2;
@@ -301,7 +301,7 @@ class Monster extends Sprite {
   faint() {
     document.querySelector(
       "#dialogueBox"
-    ).innerHTML = `<p>${this.name} fainted!<p> <p>Click...<p>`;
+    ).innerHTML = `<p>${this.name} fainted!</p> <p>Click...</p>`;
     gsap.to(this.position, {
       y: this.position.y + 20,
     });
