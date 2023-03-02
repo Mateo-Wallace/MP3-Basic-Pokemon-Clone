@@ -196,7 +196,6 @@ const animate = () => {
         overlappingArea > (player.width * player.height) / 2 &&
         Math.random() < config.game.encounterRatePercentage / 100
       ) {
-        console.log("activate battle");
         // deactivate current animation loop
         window.cancelAnimationFrame(animationId);
         audio.map.stop();

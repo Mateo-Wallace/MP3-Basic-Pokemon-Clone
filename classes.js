@@ -106,12 +106,21 @@ class Monster extends Sprite {
       "#dialogueBox"
     ).innerHTML = `<p>${this.name} used ${attack.name}<p> <p>Click...<p>`;
 
-    let healthBar = "#enemyHealthBar";
-    if (this.isEnemy) healthBar = "#playerHealthBar";
-
     let rotation = 1;
     if (this.isEnemy) rotation = -2.2;
-    recipient.health -= attack.damage;
+
+    let healthBar;
+
+    if (attack.name != "Heal") {
+      healthBar = "#enemyHealthBar";
+      if (this.isEnemy) healthBar = "#playerHealthBar";
+      recipient.health -= attack.damage;
+    } else {
+      healthBar = "#playerHealthBar";
+      if (this.isEnemy) healthBar = "#enemyHealthBar";
+      let hp = Math.min(100, this.health + attack.damage);
+      this.health = hp;
+    }
 
     switch (attack.name) {
       case "Fireball":
@@ -198,8 +207,76 @@ class Monster extends Sprite {
           });
         break;
       case "Heal":
+        audio.heal.play();
+        const healImage = new Image();
+        healImage.src = config.images.heal;
+        const heal = new Sprite({
+          position: { x: this.position.x, y: this.position.y },
+          image: healImage,
+          frames: {
+            max: 4,
+            hold: 10,
+          },
+          animate: true,
+        });
+
+        renderedSprites.push(heal);
+
+        gsap.to(heal.position, {
+          x: this.position.x,
+          y: this.position.y,
+          onComplete: () => {
+            // user gets healed
+            gsap.to(healthBar, {
+              width: this.health + "%",
+            });
+
+            renderedSprites.pop();
+          },
+        });
         break;
       case "Disintegrate":
+        const disintegrateImage = new Image();
+        disintegrateImage.src = config.images.disintegrate;
+        const disintegrate = new Sprite({
+          position: { x: recipient.position.x, y: recipient.position.y },
+          image: disintegrateImage,
+          frames: {
+            max: 4,
+            hold: 10,
+          },
+          animate: true,
+        });
+
+        renderedSprites.push(disintegrate);
+
+        gsap.to(disintegrate.position, {
+          x: recipient.position.x,
+          y: recipient.position.y,
+          onComplete: () => {
+            // enemy gets hit
+            audio.disintegrate.play();
+            gsap.to(healthBar, {
+              width: recipient.health + "%",
+            });
+
+            gsap.to(recipient.position, {
+              x: recipient.position.x + 10,
+              yoyo: true,
+              repeat: 5,
+              duration: 0.08,
+            });
+
+            gsap.to(recipient, {
+              opacity: 0,
+              repeat: 5,
+              yoyo: true,
+              duration: 0.08,
+            });
+
+            renderedSprites.pop();
+          },
+        });
         break;
     }
   }
