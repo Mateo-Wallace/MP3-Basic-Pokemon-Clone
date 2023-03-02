@@ -378,8 +378,7 @@ window.addEventListener("keyup", (e) => {
 
 document.querySelectorAll(".controller").forEach((button) => {
   button.addEventListener("mouseover", (e) => {
-    console.log(e.target.innerHTML);
-    switch (e.target.innerHTML) {
+    switch (e.target.innerHTML.trim()) {
       case "W":
         keys.w.pressed = true;
         break;
@@ -398,8 +397,7 @@ document.querySelectorAll(".controller").forEach((button) => {
 
 document.querySelectorAll(".controller").forEach((button) => {
   button.addEventListener("mouseout", (e) => {
-    console.log(e.target.innerHTML);
-    switch (e.target.innerHTML) {
+    switch (e.target.innerHTML.trim()) {
       case "W":
         keys.w.pressed = false;
         break;
