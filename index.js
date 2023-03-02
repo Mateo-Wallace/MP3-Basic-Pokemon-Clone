@@ -6,6 +6,7 @@ const c = canvas.getContext("2d");
 canvas.width = 1024;
 canvas.height = 576;
 
+// checks screen size and zooms in to fit any screen
 if (
   window.innerHeight == canvas.height * (window.innerHeight / canvas.height) &&
   window.innerWidth > canvas.width * (window.innerHeight / canvas.height)
@@ -72,6 +73,31 @@ battleZonesMap.forEach((row, i) => {
   });
 });
 
+const charactersMap = [];
+for (let i = 0; i < charactersMapData.length; i += 70) {
+  charactersMap.push(charactersMapData.slice(i, 70 + i));
+}
+const characters = [];
+charactersMap.forEach((row, i) => {
+  row.forEach((symbol, j) => {
+    if (symbol === 1026)
+      characters.push(
+        new Sprite({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y,
+          },
+          image: {
+            src: config.images.villager,
+          },
+          frames: {
+            max: 4,
+            hold: 10,
+          },
+        })
+      );
+  });
+});
 
 const playerDownImage = new Image();
 playerDownImage.src = config.images.playerDown;
@@ -136,7 +162,8 @@ const keys = {
 };
 
 // determines what objects move on player key press
-const movables = [background, ...boundaries, foreground, ...battleZones];
+const movables = [background, ...boundaries, foreground, ...battleZones, ...characters];
+const renderables = [background, ...boundaries, ...battleZones, ...characters, player, foreground]
 // determines if player and boundaries are overlapping
 const rectangularCollision = ({ rectangle1, rectangle2 }) => {
   return (
@@ -154,20 +181,11 @@ const battle = {
 // callback function onself that constantly reloads the screen based on player input
 const animate = () => {
   const animationId = window.requestAnimationFrame(animate);
-  // draws map on screen
-  background.draw();
 
-  //   draws each boundary on screen
-  boundaries.forEach((boundary) => {
-    boundary.draw();
+  // renders all images on screen
+  renderables.forEach((renderable) => {
+    renderable.draw();
   });
-  battleZones.forEach((battleZone) => {
-    battleZone.draw();
-  });
-
-  // draws player on screen
-  player.draw();
-  foreground.draw();
 
   let moving = true;
   player.animate = false;

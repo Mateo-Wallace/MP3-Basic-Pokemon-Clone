@@ -1,5 +1,5 @@
 const config = {
-  showBoundaries: 0,
+  showBoundaries: 1,
   onlyBattle: 0,
 
   game: {
@@ -19,6 +19,7 @@ const config = {
     playerUp: "./img/playerUp.png",
     playerRight: "./img/playerRight.png",
     playerLeft: "./img/playerLeft.png",
+    villager: "./img/villager.png",
 
     battleBackground: "./img/battleBackground.png",
     draggle: "./img/draggleSprite.png",
