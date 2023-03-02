@@ -214,6 +214,8 @@ const animate = () => {
               duration: 0.4,
               onComplete() {
                 // activate new animation loop
+                document.querySelector("#controllerContainer").style.display =
+                  "none";
                 initBattle();
                 animateBattle();
                 gsap.to("#overlappingDiv", {
@@ -372,6 +374,46 @@ window.addEventListener("keyup", (e) => {
       keys.d.pressed = false;
       break;
   }
+});
+
+document.querySelectorAll(".controller").forEach((button) => {
+  button.addEventListener("mouseover", (e) => {
+    console.log(e.target.innerHTML);
+    switch (e.target.innerHTML) {
+      case "W":
+        keys.w.pressed = true;
+        break;
+      case "A":
+        keys.a.pressed = true;
+        break;
+      case "S":
+        keys.s.pressed = true;
+        break;
+      case "D":
+        keys.d.pressed = true;
+        break;
+    }
+  });
+});
+
+document.querySelectorAll(".controller").forEach((button) => {
+  button.addEventListener("mouseout", (e) => {
+    console.log(e.target.innerHTML);
+    switch (e.target.innerHTML) {
+      case "W":
+        keys.w.pressed = false;
+        break;
+      case "A":
+        keys.a.pressed = false;
+        break;
+      case "S":
+        keys.s.pressed = false;
+        break;
+      case "D":
+        keys.d.pressed = false;
+        break;
+    }
+  });
 });
 
 let clicked = false;
