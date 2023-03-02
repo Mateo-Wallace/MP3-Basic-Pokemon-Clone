@@ -66,20 +66,7 @@ If you would like to download the project locally:
 
 1. Fork the Project
 1. Clone the Repo to your machine
-1. Rename the `.env.example` file to just `.env`
-1. Adjust the `DB_URL` variable so that where `mysql+pymysql://root:<password>@...` says `<password>` is replaced with your local mysql password. For example `mysql+pymysql://root:mypassword123@...`
-1. Open your terminal, preferablly `powershell` as `git bash` will not work. Begin your virtual environment by in the command line running `python -m venv venv`
-   > **NOTE**
-   >
-   > In order to activate your virtual environment run `.\venv\Scripts\activate` and to deactivate run `deactivate`.
-   >
-   > This is best practice when working with the application so you do not download any packages globally to your computer.
-1. Download the Python requirements for your project by running `pip install -r requirements.txt`
-1. To begin the server run `python -m flask run`
-1. To view the website navigate in your browser to `http://127.0.0.1:5000/`
-   > **NOTE**
-   >
-   > Upon first viewing your version of the website their will be no data presented. Should you wish to have data pre filled run `python seeds.py` in order to seed data such as users, posts, comments, and votes.
+1. To run the game right click `index.html` and select `Open In Default Browser`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,6 +94,16 @@ Distributed under the MIT License. See [LICENSE](./LICENSE) for more information
 
 Mateo Wallace - [GitHub](https://github.com/Mateo-Wallace) - [Email](mailto:mateo.t.wallace@gmail.com) - [LinkedIn](https://www.linkedin.com/in/mateo-wallace/)
 
-Project Link: [MP2-Discord-DumBot-V2](https://github.com/Mateo-Wallace/MP2-Discord-DumBot-V2)
+Project Link: [TBD](https://github.com/Mateo-Wallace/MP2-Discord-DumBot-V2)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Acknowledgments
+
+I am appreciative for the source code, ideas, and inspiration that all of these repos and creators have provided to this project. If you see anything within my code that you recognize as yours and don't see yourself listed here please feel free to open an issue and I will add you!
+
+- [Chris Courses - Pokemon JavaScript Game Tutorial with HTML Canvas](https://www.youtube.com/watch?v=yP5DKzriqXA)
+- [chriscourses - pokemon-style-game](https://github.com/chriscourses/pokemon-style-game)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
