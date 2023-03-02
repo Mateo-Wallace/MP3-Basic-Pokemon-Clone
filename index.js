@@ -2,6 +2,7 @@
 const canvas = document.querySelector("canvas");
 const body = document.querySelector("body");
 const c = canvas.getContext("2d");
+config.showController ? "" : document.querySelector("#controllerContainer").style.display = "none";
 // determines size for game window
 canvas.width = 1024;
 canvas.height = 576;

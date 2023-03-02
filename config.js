@@ -1,6 +1,7 @@
 const config = {
   showBoundaries: 1,
   onlyBattle: 0,
+  showController: 0,
 
   game: {
     musicVolume: 0.1, //default 0.1
