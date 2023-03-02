@@ -19,7 +19,7 @@ const config = {
       "Isn't Copa wonderful this time of year~",
       "Now if only I could find Lola...",
     ],
-    villager: ["...", "Hey mister, have you seen my Doggochu?"],
+    villager: ["...", "I could have sworn a saw a thread around here...", "AAAH! Don't sneak up on me like that!"],
   },
 
   images: {
