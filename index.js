@@ -80,15 +80,8 @@ for (let i = 0; i < charactersMapData.length; i += 70) {
 const characters = [];
 charactersMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
+    // 1026 = villager
     if (symbol === 1026) {
-      boundaries.push(
-        new Boundary({
-          position: {
-            x: j * Boundary.width + offset.x,
-            y: i * Boundary.height + offset.y,
-          },
-        })
-      );
       characters.push(
         new Sprite({
           position: {
@@ -106,7 +99,35 @@ charactersMap.forEach((row, i) => {
           animate: true,
         })
       );
+      // 1031 = old man
+    } else if (symbol === 1031) {
+      characters.push(
+        new Sprite({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y,
+          },
+          image: {
+            src: config.images.oldMan,
+          },
+          frames: {
+            max: 4,
+            hold: 60,
+          },
+          scale: 3,
+        })
+      );
     }
+
+    if (symbol != 0)
+      boundaries.push(
+        new Boundary({
+          position: {
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y,
+          },
+        })
+      );
   });
 });
 

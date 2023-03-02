@@ -20,6 +20,7 @@ const config = {
     playerRight: "./img/playerRight.png",
     playerLeft: "./img/playerLeft.png",
     villager: "./img/villager.png",
+    oldMan: "./img/oldMan.png",
 
     battleBackground: "./img/battleBackground.png",
     draggle: "./img/draggleSprite.png",
