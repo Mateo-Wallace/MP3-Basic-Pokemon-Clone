@@ -72,11 +72,7 @@ battleZonesMap.forEach((row, i) => {
   });
 });
 
-// loads all overworld images
-const mapImage = new Image();
-mapImage.src = config.images.map;
-const foregroundImage = new Image();
-foregroundImage.src = config.images.foregroundObjects;
+
 const playerDownImage = new Image();
 playerDownImage.src = config.images.playerDown;
 const playerUpImage = new Image();
@@ -109,14 +105,18 @@ const background = new Sprite({
     x: offset.x,
     y: offset.y,
   },
-  image: mapImage,
+  image: {
+    src: config.images.map,
+  },
 });
 const foreground = new Sprite({
   position: {
     x: offset.x,
     y: offset.y,
   },
-  image: foregroundImage,
+  image: {
+    src: config.images.foregroundObjects,
+  },
 });
 
 // tracks whether a key has been pressed
@@ -214,8 +214,6 @@ const animate = () => {
               duration: 0.4,
               onComplete() {
                 // activate new animation loop
-                document.querySelector("#controllerContainer").style.display =
-                  "none";
                 initBattle();
                 animateBattle();
                 gsap.to("#overlappingDiv", {

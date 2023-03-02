@@ -1,14 +1,12 @@
-// loads all battle images
-const battleBackgroundImage = new Image();
-battleBackgroundImage.src = config.images.battleBackground;
-
 // loads all battle sprites
 const battleBackground = new Sprite({
   position: {
     x: 0,
     y: 0,
   },
-  image: battleBackgroundImage,
+  image: {
+    src: config.images.battleBackground,
+  },
 });
 let draggle;
 let emby;
@@ -17,6 +15,7 @@ let battleAnimationId;
 let queue;
 
 const initBattle = () => {
+  document.querySelector("#controllerContainer").style.display = "none";
   document.querySelector("#userInterface").style.display = "block";
   document.querySelector("#dialogueBox").style.display = "none";
   document.querySelector("#enemyHealthBar").style.width = "100%";
@@ -56,6 +55,7 @@ const initBattle = () => {
             onComplete: () => {
               cancelAnimationFrame(battleAnimationId);
               animate();
+              document.querySelector("#controllerContainer").style.display = "block";
               document.querySelector("#userInterface").style.display = "none";
 
               gsap.to("#overlappingDiv", {
@@ -64,6 +64,7 @@ const initBattle = () => {
 
               battle.initiated = false;
               audio.map.play();
+              return;
             },
           });
         });
@@ -92,14 +93,15 @@ const initBattle = () => {
             onComplete: () => {
               cancelAnimationFrame(battleAnimationId);
               animate();
+              document.querySelector("#controllerContainer").style.display = "block";
               document.querySelector("#userInterface").style.display = "none";
-
               gsap.to("#overlappingDiv", {
                 opacity: 0,
               });
 
               battle.initiated = false;
               audio.map.play();
+              return;
             },
           });
         });
