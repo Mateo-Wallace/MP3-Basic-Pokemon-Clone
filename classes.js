@@ -38,6 +38,7 @@ class Sprite {
     this.opacity = 1;
     this.rotation = rotation;
     this.scale = scale;
+    this.interactionAsset
   }
 
   draw() {

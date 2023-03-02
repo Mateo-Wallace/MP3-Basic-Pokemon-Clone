@@ -2,7 +2,9 @@
 const canvas = document.querySelector("canvas");
 const body = document.querySelector("body");
 const c = canvas.getContext("2d");
-config.showController ? "" : document.querySelector("#controllerContainer").style.display = "none";
+config.showController
+  ? ""
+  : (document.querySelector("#controllerContainer").style.display = "none");
 // determines size for game window
 canvas.width = 1024;
 canvas.height = 576;
@@ -437,6 +439,25 @@ window.addEventListener("keydown", (e) => {
     clicked = true;
   }
 
+  if (player.isInteracting) {
+    switch (e.key) {
+      case " ":
+        player.interactionAsset.dialogueIndex++;
+
+        const { dialogueIndex, dialogue } = player.interactionAsset;
+        if (dialogueIndex <= dialogue.length - 1) {
+          console.log(player.interactionAsset.dialogue[dialogueIndex]);
+          return;
+        }
+
+        // finish conversation
+        player.isInteracting = false;
+        player.interactionAsset.dialogueIndex = 0
+        break;
+    }
+    return;
+  }
+
   switch (e.key) {
     case "w":
       keys.w.pressed = true;
@@ -451,6 +472,12 @@ window.addEventListener("keydown", (e) => {
       keys.d.pressed = true;
       break;
     case " ":
+      if (!player.interactionAsset) return;
+
+      // beggining the conversation
+      const firstMessage = player.interactionAsset.dialogue[0];
+      console.log(firstMessage);
+      player.isInteracting = true;
       break;
   }
 });
