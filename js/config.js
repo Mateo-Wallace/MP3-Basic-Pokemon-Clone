@@ -2,7 +2,7 @@ const config = {
   dev: {
     showBoundaries: 0,
     onlyBattle: 0,
-    showController: 0,
+    showController: 1,
   },
 
   game: {
@@ -19,7 +19,11 @@ const config = {
       "Isn't Copa wonderful this time of year~",
       "Now if only I could find Lola...",
     ],
-    villager: ["...", "I could have sworn a saw a thread around here...", "AAAH! Don't sneak up on me like that!"],
+    villager: [
+      "...",
+      "I could have sworn I saw a thread around here...",
+      "AAAH! Don't sneak up on me like that!",
+    ],
   },
 
   images: {
