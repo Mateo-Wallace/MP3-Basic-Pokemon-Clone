@@ -219,6 +219,32 @@ const rectangularCollision = ({ rectangle1, rectangle2 }) => {
   );
 };
 
+const checkForCharacterCollision = ({
+  characters,
+  player,
+  characterOffset = { x: 0, y: 0 },
+}) => {
+  // monitor for character collision
+  for (let i = 0; i < characters.length; i++) {
+    const character = characters[i];
+
+    if (
+      rectangularCollision({
+        rectangle1: player,
+        rectangle2: {
+          ...character,
+          position: {
+            x: character.position.x + characterOffset.x,
+            y: character.position.y + characterOffset.y,
+          },
+        },
+      })
+    ) {
+      console.log("go");
+    }
+  }
+};
+
 const battle = {
   initiated: false,
 };
@@ -296,6 +322,13 @@ const animate = () => {
   if (keys.w.pressed) {
     player.animate = true;
     player.image = player.sprites.up;
+
+    checkForCharacterCollision({
+      characters,
+      player,
+      characterOffset: { x: 0, y: 3 },
+    });
+
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
       if (
@@ -323,6 +356,13 @@ const animate = () => {
   if (keys.a.pressed) {
     player.animate = true;
     player.image = player.sprites.left;
+
+    checkForCharacterCollision({
+      characters,
+      player,
+      characterOffset: { x: 3, y: 0 },
+    });
+
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
       if (
@@ -350,6 +390,13 @@ const animate = () => {
   if (keys.s.pressed) {
     player.animate = true;
     player.image = player.sprites.down;
+
+    checkForCharacterCollision({
+      characters,
+      player,
+      characterOffset: { x: 0, y: -3 },
+    });
+
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
       if (
@@ -377,6 +424,13 @@ const animate = () => {
   if (keys.d.pressed) {
     player.animate = true;
     player.image = player.sprites.right;
+
+    checkForCharacterCollision({
+      characters,
+      player,
+      characterOffset: { x: -3, y: 0 },
+    });
+
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
       if (
