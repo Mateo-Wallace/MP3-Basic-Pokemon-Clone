@@ -14,6 +14,14 @@ const config = {
     healDam: 10, //default -10
   },
 
+  npcDialogue: {
+    oldMan: [
+      "Isn't Copa wonderful this time of year~",
+      "Now if only I could find Lola...",
+    ],
+    villager: ["...", "Hey mister, have you seen my Doggochu?"],
+  },
+
   images: {
     map: "./assets/img/Pellet-Town-Zoom-Help.png",
     foregroundObjects: "./assets/img/foregroundObjects.png",

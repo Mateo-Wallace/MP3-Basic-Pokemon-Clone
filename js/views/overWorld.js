@@ -67,7 +67,7 @@ charactersMap.forEach((row, i) => {
           },
           scale: 3,
           animate: true,
-          dialogue: ["...", "Hey mister, have you seen my Doggochu?"],
+          dialogue: config.npcDialogue.villager,
         })
       );
       // 1031 = old man
@@ -86,10 +86,7 @@ charactersMap.forEach((row, i) => {
             hold: 60,
           },
           scale: 3,
-          dialogue: [
-            "Isn't Copa wonderful this time of year~",
-            "Now if only I could find Lola...",
-          ],
+          dialogue: config.npcDialogue.oldMan,
         })
       );
     }
