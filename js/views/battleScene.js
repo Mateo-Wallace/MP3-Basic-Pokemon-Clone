@@ -55,7 +55,11 @@ const initBattle = () => {
             onComplete: () => {
               cancelAnimationFrame(battleAnimationId);
               animate();
-              config.showController ? document.querySelector("#controllerContainer").style.display = "block" : "";
+              config.dev.showController
+                ? (document.querySelector(
+                    "#controllerContainer"
+                  ).style.display = "block")
+                : "";
               document.querySelector("#userInterface").style.display = "none";
 
               gsap.to("#overlappingDiv", {
@@ -93,7 +97,11 @@ const initBattle = () => {
             onComplete: () => {
               cancelAnimationFrame(battleAnimationId);
               animate();
-              config.showController ? document.querySelector("#controllerContainer").style.display = "block" : "";
+              config.dev.showController
+                ? (document.querySelector(
+                    "#controllerContainer"
+                  ).style.display = "block")
+                : "";
               document.querySelector("#userInterface").style.display = "none";
               gsap.to("#overlappingDiv", {
                 opacity: 0,
@@ -124,7 +132,7 @@ const animateBattle = () => {
     sprite.draw();
   });
 };
-if (config.onlyBattle) {
+if (config.dev.onlyBattle) {
   initBattle();
   animateBattle();
 } else animate();
