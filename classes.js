@@ -238,6 +238,7 @@ class Monster extends Sprite {
             hold: 10,
           },
           animate: true,
+          scale: 3,
         });
 
         renderedSprites.push(heal);
@@ -266,6 +267,7 @@ class Monster extends Sprite {
             hold: 10,
           },
           animate: true,
+          scale: 3,
         });
 
         renderedSprites.push(disintegrate);
