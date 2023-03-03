@@ -30,6 +30,7 @@ While building this project I learned to:
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
+- [Acknowledgments](#acknowledgments)
 
 ## Usage
 
